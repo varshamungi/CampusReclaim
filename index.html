@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusReclaim - Reconnect with What Matters</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>🔍 CampusReclaim</h1>
+                <p class="tagline">Reconnect with What Matters</p>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#items">Browse</a>
+                <a id="authLink" href="#auth">Login</a>
+                <a id="logoutLink" href="#" style="display:none;">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Lost Something? Found Something?</h2>
+            <p>CampusReclaim helps Anurag Engineering College students reconnect with lost items and return found ones</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="postItemBtn">Post an Item</button>
+                <button class="btn btn-secondary" id="browseItemsBtn">Browse Items</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Authentication Section -->
+        <div id="authSection" class="section">
+            <div class="auth-container">
+                <!-- Login Form -->
+                <div id="loginForm" class="form-container active">
+                    <h3>Login to CampusReclaim</h3>
+                    <form id="loginFormElement">
+                        <input type="email" placeholder="Email" required>
+                        <input type="password" placeholder="Password" required>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                    <p>Don't have an account? <a href="#" onclick="toggleAuth()">Register</a></p>
+                </div>
+
+                <!-- Register Form -->
+                <div id="registerForm" class="form-container">
+                    <h3>Register with CampusReclaim</h3>
+                    <form id="registerFormElement">
+                        <input type="text" placeholder="Full Name" required>
+                        <input type="email" placeholder="Email" required>
+                        <input type="tel" placeholder="Phone Number" required>
+                        <input type="password" placeholder="Password" required>
+                        <input type="password" placeholder="Confirm Password" required>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                    <p>Already have an account? <a href="#" onclick="toggleAuth()">Login</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Post Item Section -->
+        <div id="postItemSection" class="section" style="display:none;">
+            <h2>Post a Lost or Found Item</h2>
+            <form id="itemForm" class="item-form">
+                <div class="form-row">
+                    <input type="text" id="title" placeholder="Item Title" required>
+                    <select id="status" required>
+                        <option value="">Select Status</option>
+                        <option value="lost">Lost Item</option>
+                        <option value="found">Found Item</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <select id="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Documents">Documents</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Keys">Keys</option>
+                        <option value="Wallet">Wallet</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input type="date" id="dateLostFound" required>
+                </div>
+
+                <textarea id="description" placeholder="Detailed Description" rows="4" required></textarea>
+                <input type="text" id="location" placeholder="Location (e.g., Library, Cafeteria)" required>
+                <input type="tel" id="phone" placeholder="Your Phone Number" required>
+                <input type="file" id="itemImage" accept="image/*">
+                <button type="submit" class="btn btn-primary">Post Item</button>
+            </form>
+        </div>
+
+        <!-- Browse Items Section -->
+        <div id="itemsSection" class="section" style="display:none;">
+            <h2>Browse Items</h2>
+            <div class="filters">
+                <select id="filterStatus">
+                    <option value="">All Items</option>
+                    <option value="lost">Lost Items</option>
+                    <option value="found">Found Items</option>
+                </select>
+                <select id="filterCategory">
+                    <option value="">All Categories</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Documents">Documents</option>
+                    <option value="Accessories">Accessories</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Keys">Keys</option>
+                    <option value="Wallet">Wallet</option>
+                </select>
+            </div>
+            <div id="itemsContainer" class="items-grid"></div>
+        </div>
+
+        <!-- Item Details Modal -->
+        <div id="itemModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="itemDetails"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 CampusReclaim - Anurag Engineering College | Reconnect with What Matters</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
